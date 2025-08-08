@@ -21,7 +21,7 @@ Dashboard showing real-time request statistics and server monitoring
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/SurajKarmakar1/Ngnix-mock/tree/main
    cd mini-nginx
    ```
 
