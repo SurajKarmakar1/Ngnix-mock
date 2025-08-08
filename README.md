@@ -17,7 +17,7 @@ A lightweight Node.js web server with built-in dashboard for monitoring requests
 
 1. **Clone the repository**:
    bash:
-   git clone <repository-url>
+   git clone https://github.com/SurajKarmakar1/Ngnix-mock
    cd mini-nginx
 
 2. No dependencies required - Uses only built-in Node.js modules!
