@@ -14,7 +14,10 @@ A lightweight Node.js web server with built-in dashboard for monitoring requests
 - **Auto Index**: Automatically serves `index.html` for directories
 )
 ```
+📸 Demo
 
+
+Dashboard showing real-time request statistics and server monitoring
 ## 🛠️ Installation
 
 1. **Clone the repository**:
