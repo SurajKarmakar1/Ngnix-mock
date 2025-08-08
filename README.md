@@ -15,8 +15,7 @@ A lightweight Node.js web server with built-in dashboard for monitoring requests
 )
 ```
 📸 Demo
-https://github.com/SurajKarmakar1/Ngnix-mock/blob/main/src/%7BE62A39D0-35E2-4DF4-B939-D1F8FBF48505%7D.png
-
+src/{E62A39D0-35E2-4DF4-B939-D1F8FBF48505}.png
 Dashboard showing real-time request statistics and server monitoring
 ## 🛠️ Installation
 
