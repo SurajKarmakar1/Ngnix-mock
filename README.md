@@ -22,7 +22,7 @@ Dashboard showing real-time request statistics and server monitoring
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/SurajKarmakar1/Ngnix-mock/tree/main
-   cd mini-nginx
+ 
    ```
 
 2. **No dependencies required** - Uses only built-in Node.js modules!
