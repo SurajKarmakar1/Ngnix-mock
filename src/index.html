@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini NGINX Server Dashboard</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-black text-white min-h-screen">
+    <!-- Header -->
+    <header
+      class="border-b border-gray-800 bg-gray-950/50 backdrop-blur-sm sticky top-0 z-10"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-8 h-8 bg-white rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-5 h-5 text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold">Mini NGINX</h1>
+              <p class="text-xs text-gray-400">Mockup Server</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-2 h-2 bg-green-500 rounded-full animate-pulse"
+              ></div>
+              <span class="text-sm text-green-400">Running</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div
+          class="bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400 mb-1">Total Requests</p>
+              <p class="text-2xl font-bold" id="total-requests">0</p>
+            </div>
+            <div
+              class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400 mb-1">Uptime</p>
+              <p class="text-2xl font-bold" id="uptime">0s</p>
+            </div>
+            <div
+              class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400 mb-1">Active Routes</p>
+              <p class="text-2xl font-bold" id="active-routes">0</p>
+            </div>
+            <div
+              class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-950 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-colors"
+        >
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm text-gray-400 mb-1">Server Status</p>
+              <p class="text-2xl font-bold text-green-400">Healthy</p>
+            </div>
+            <div
+              class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center"
+            >
+              <svg
+                class="w-6 h-6 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts and Logs -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <!-- Request Chart -->
+        <div class="bg-gray-950 border border-gray-800 rounded-xl p-6">
+          <h3 class="text-lg font-semibold mb-4">Request Statistics</h3>
+          <div class="h-64">
+            <canvas id="requestsChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Popular Routes -->
+        <div class="bg-gray-950 border border-gray-800 rounded-xl p-6">
+          <h3 class="text-lg font-semibold mb-4">Popular Routes</h3>
+          <div class="space-y-3" id="popular-routes">
+            <p class="text-gray-400 text-center py-8">Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="bg-gray-950 border border-gray-800 rounded-xl p-6">
+        <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <button
+            onclick="window.location.href='./about.html'"
+            class="bg-gray-900 hover:bg-gray-800 border border-gray-800 rounded-lg p-4 text-left transition-colors"
+          >
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-medium">About Page</h4>
+                <p class="text-sm text-gray-400">View server info</p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onclick="window.location.href='./contact.html'"
+            class="bg-gray-900 hover:bg-gray-800 border border-gray-800 rounded-lg p-4 text-left transition-colors"
+          >
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-medium">Contact</h4>
+                <p class="text-sm text-gray-400">Get in touch</p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onclick="fetch('/api/health').then(r => r.json()).then(data => alert('Server is healthy! Uptime: ' + data.uptime + ' seconds'))"
+            class="bg-gray-900 hover:bg-gray-800 border border-gray-800 rounded-lg p-4 text-left transition-colors"
+          >
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center"
+              >
+                <svg
+                  class="w-5 h-5 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-medium">Health Check</h4>
+                <p class="text-sm text-gray-400">Test server</p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Chart initialization
+      const ctx = document.getElementById("requestsChart").getContext("2d");
+      const requestsChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "Total Requests",
+              data: [],
+              borderColor: "#e5e7eb",
+              backgroundColor: "rgba(229, 231, 235, 0.1)",
+              borderWidth: 2,
+              fill: true,
+              tension: 0.4,
+              pointBackgroundColor: "#e5e7eb",
+              pointBorderColor: "#000",
+              pointBorderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
+              ticks: {
+                color: "rgba(255, 255, 255, 0.7)",
+                font: {
+                  size: 12,
+                },
+              },
+            },
+            x: {
+              grid: {
+                color: "rgba(255, 255, 255, 0.1)",
+              },
+              ticks: {
+                color: "rgba(255, 255, 255, 0.7)",
+                font: {
+                  size: 12,
+                },
+                maxRotation: 45,
+                minRotation: 45,
+              },
+            },
+          },
+        },
+      });
+
+      // Fetch and update stats
+      async function updateStats() {
+        try {
+          const response = await fetch("/api/stats");
+          const stats = await response.json();
+
+          document.getElementById("total-requests").textContent =
+            stats.requests;
+          document.getElementById("uptime").textContent = `${stats.uptime}s`;
+          document.getElementById("active-routes").textContent = Object.keys(
+            stats.routes
+          ).length;
+
+          // Update popular routes
+          const popularRoutes = document.getElementById("popular-routes");
+          if (stats.mostVisited && stats.mostVisited.length > 0) {
+            popularRoutes.innerHTML = stats.mostVisited
+              .map(
+                ([route, count]) => `
+            <div class="flex items-center justify-between p-3 bg-gray-900 rounded-lg">
+              <span class="font-mono text-sm">${route}</span>
+              <span class="text-gray-300 font-semibold">${count}</span>
+            </div>
+          `
+              )
+              .join("");
+          } else {
+            popularRoutes.innerHTML =
+              '<p class="text-gray-400 text-center py-4">No data yet</p>';
+          }
+        } catch (error) {
+          console.error("Error fetching stats:", error);
+        }
+      }
+
+      // Update chart with REAL data from API
+      async function updateChart() {
+        try {
+          const response = await fetch("/api/stats");
+          const stats = await response.json();
+
+          const now = new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          });
+
+          // Use actual total requests for the chart
+          const totalRequests = stats.requests;
+
+          // Keep only the last 20 data points
+          if (requestsChart.data.labels.length >= 20) {
+            requestsChart.data.labels.shift();
+            requestsChart.data.datasets[0].data.shift();
+          }
+
+          requestsChart.data.labels.push(now);
+          requestsChart.data.datasets[0].data.push(totalRequests);
+          requestsChart.update();
+        } catch (error) {
+          console.error("Error updating chart:", error);
+        }
+      }
+
+      // Initial load and periodic updates
+      updateStats();
+      updateChart();
+      setInterval(updateStats, 2000);
+      setInterval(updateChart, 3000);
+    </script>
+  </body>
+</html>

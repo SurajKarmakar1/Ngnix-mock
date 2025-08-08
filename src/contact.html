@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Mini NGINX</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black text-white min-h-screen">
+    <div class="container mx-auto px-6 py-12">
+      <div class="max-w-2xl mx-auto">
+        <a
+          href="/"
+          class="inline-flex items-center text-gray-300 hover:text-white mb-8"
+        >
+          <svg
+            class="w-4 h-4 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
+          </svg>
+          Back to Dashboard
+        </a>
+
+        <div class="bg-gray-950 border border-gray-800 rounded-xl p-8">
+          <h1 class="text-3xl font-bold mb-2">Get in Touch</h1>
+          <p class="text-gray-400 mb-8">
+            Have questions about the Mini NGINX server? Reach out!
+          </p>
+
+          <form class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium mb-2">Name</label>
+              <input
+                type="text"
+                class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:border-gray-600 transition-colors text-white"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:border-gray-600 transition-colors text-white"
+                placeholder="your@email.com"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Message</label>
+              <textarea
+                rows="5"
+                class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-3 focus:outline-none focus:border-gray-600 transition-colors text-white"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+
+            <button
+              type="button"
+              onclick="alert('Message sent! This is a demo server.')"
+              class="w-full bg-white hover:bg-gray-200 text-black font-medium py-3 rounded-lg transition-colors"
+            >
+              Send Message
+            </button>
+          </form>
+
+          <div class="mt-8 pt-8 border-t border-gray-800">
+            <h3 class="text-lg font-semibold mb-4">Server Information</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="bg-gray-900 rounded-lg p-4">
+                <div class="text-sm text-gray-400">Port</div>
+                <div class="font-mono">5000</div>
+              </div>
+              <div class="bg-gray-900 rounded-lg p-4">
+                <div class="text-sm text-gray-400">Root Directory</div>
+                <div class="font-mono">/src</div>
+              </div>
+              <div class="bg-gray-900 rounded-lg p-4">
+                <div class="text-sm text-gray-400">Supported Types</div>
+                <div class="font-mono text-sm">HTML, CSS, JS, Images</div>
+              </div>
+              <div class="bg-gray-900 rounded-lg p-4">
+                <div class="text-sm text-gray-400">Security</div>
+                <div class="font-mono text-sm">
+                  Directory Traversal Protection
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

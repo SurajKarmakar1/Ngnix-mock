@@ -1,0 +1,23 @@
+{
+  "name": "mini-nginx-server",
+  "version": "1.0.0",
+  "description": "A showcaseable mini NGINX server with dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css"
+  },
+  "keywords": [
+    "nginx",
+    "server",
+    "nodejs",
+    "dashboard"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
