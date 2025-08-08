@@ -12,7 +12,7 @@ A lightweight Node.js web server with built-in dashboard for monitoring requests
 - **Request Logging**: Tracks all incoming requests with detailed logging
 - **Security**: Prevents directory traversal attacks
 - **Auto Index**: Automatically serves `index.html` for directories
-)
+
 ```
 📸 Demo:
 
