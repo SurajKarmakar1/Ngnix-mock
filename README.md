@@ -14,13 +14,11 @@ A lightweight Node.js web server with built-in dashboard for monitoring requests
 - **Auto Index**: Automatically serves `index.html` for directories
 
 ```
-📸 Demo:
+📸 **Demo:**
 
-https://github.com/SurajKarmakar1/Ngnix-mock/blob/main/src/%7BE62A39D0-35E2-4DF4-B939-D1F8FBF48505%7D.png
+![Dashboard Demo](https://github.com/SurajKarmakar1/Ngnix-mock/raw/main/src/%7BE62A39D0-35E2-4DF4-B939-D1F8FBF48505%7D.png)
 
-
-Dashboard showing real-time request statistics and server monitoring
-
+*Dashboard showing real-time request statistics and server monitoring*
 ## 🛠️ Installation
 
 1. **Clone the repository**:
